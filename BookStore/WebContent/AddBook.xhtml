@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:h="http://xmlns.jcp.org/jsf/html"
+	xmlns:f="http://xmlns.jcp.org/jsf/core">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+<link rel="stylesheet" href="style.css" type="text/css" />
+<link href="https://fonts.googleapis.com/css?family=Roboto+Condensed&amp;display=swap" rel="stylesheet" />
+<title>#{msgs.formBigTitle} </title>
+</head>
+<body>
+	<h2>#{msgs.formTitle}</h2>
+	<p>#{msgs.formText}</p>
+	<h:form>
+		<h:panelGrid columns="2">
+			#{msgs.bookName}
+			<h:inputText value="#{formBooks.bname}" />
+			
+			#{msgs.author}
+			<h:inputText value="#{formBooks.author}"/>
+			
+			#{msgs.pageNumber}
+			<h:inputText value="#{formBooks.page_number}" />
+			
+			#{msgs.firstEditionYear}
+			<h:inputText value="#{formBooks.first_edition_year}" />
+			
+			#{msgs.language}
+			<h:inputText value="#{formBooks.language}"/>
+			
+			#{msgs.category}
+			<h:inputText value="#{formBooks.category}" />
+			
+			#{msgs.publisher}
+			<h:inputText value="#{formBooks.publisher}" />
+			
+			#{msgs.price}
+			<h:inputText value="#{formBooks.price}"/>
+			
+			
+		</h:panelGrid>
+		<br/>
+		<h:commandButton value="#{msgs.buttonSave}" action="#{formBooks.save}" />
+		<h:commandButton value="#{msgs.buttonBooks}" action="#{formBooks.MyBooks}"></h:commandButton>
+	</h:form>
+	<br/>
+	#{formBooks.status}
+</body>
+</html>

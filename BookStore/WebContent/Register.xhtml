@@ -1,0 +1,63 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:h="http://xmlns.jcp.org/jsf/html"
+	xmlns:f="http://xmlns.jcp.org/jsf/core"
+	xmlns:mcv="http://myfaces.apache.org/commons/validators">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+<link rel="stylesheet" href="style.css" type="text/css" />
+<link href="https://fonts.googleapis.com/css?family=Roboto+Condensed&amp;display=swap" rel="stylesheet" />
+<title>#{msgs.formRegister}</title>
+</head>
+<h:body>
+	<h2>#{msgs.formRegister}</h2>
+   <h:form>
+    <h:panelGrid columns="3">
+     #{msgs.rFullName}
+     <h:inputText value="#{formUsers.fullName}" required="true" requiredMessage="Enter your name."
+     validatorMessage="Enter at least 3, at most 25 chars" id="fullName">
+     <f:validateLength minimum="3" maximum="25" />
+      </h:inputText>
+     <h:message for="fullName" styleClass="error" />
+    
+     #{msgs.rPassword}
+    <h:inputSecret id="password" value="#{formUsers.password}" required="true" requiredMessage="Password must enter."
+     validatorMessage="Password must contain at least one number and one uppercase and lowercase letter, and at least 8 or more characters " > 
+        <f:validateRegex pattern="(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{8,}" />
+        </h:inputSecret>
+     <h:message for="password" styleClass="error" />
+     
+     #{msgs.rEnterPassword}
+    <h:inputSecret id="password2" value="#{formUsers.password2}" required="true"
+     requiredMessage="You must enter the same password" >
+      <mcv:validateCompareTo operator="eq" forId="password" />
+      </h:inputSecret>
+     <h:message for="password2" styleClass="error" />
+     
+     
+     #{msgs.rEmailAddress}
+     <h:inputText value="#{formUsers.email1}" required="true" requiredMessage="Enter your e-mail address" 
+     validator="#{formUsers.checkEmail}" id="email1">
+     <mcv:validateEmail message="Incorrect e-mail format."/>
+      </h:inputText>
+     <h:message for="email1" styleClass="error"/>
+     
+    
+      #{msgs.rEnterEmailAddress}
+      <h:inputText value="#{formUsers.email2}" required="true" requiredMessage="Re-enter your e-mail address" 
+     validatorMessage="You must enter the same e-mail address"  id="email2">
+     <mcv:validateCompareTo operator="eq" forId="email1" />
+      </h:inputText>
+     <h:message for="email2" styleClass="error"/>
+     
+    </h:panelGrid>
+    <br/>
+    <h:commandButton value="#{msgs.buttonSave}" action="#{formUsers.saveForm}" />
+    
+     <h:commandButton value="#{msgs.buttonLogin}" action="UserLogin?faces-redirect=true" />
+    <br/><br/>
+    #{formUsers.message}
+   </h:form>
+</h:body>
+</html>

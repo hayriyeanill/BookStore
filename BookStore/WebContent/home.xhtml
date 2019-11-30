@@ -1,0 +1,78 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:p="http://primefaces.org/ui">
+	
+<h:head>
+<link rel="stylesheet" href="style.css" type="text/css" />
+</h:head>
+<h:body>  
+<h:form id="form" style="width:1300px">  
+<p:growl id="msgs" showDetail="true" />  
+<h3 style="margin-top:0">Online Book Store</h3>  
+	<p:growl id="message"></p:growl>
+	<p:tabView activeIndex="#{tabViewManagedBean.index}" dynamic="true" cache="false">
+
+		<p:tab  title="Book Add" >
+				<h:form>
+		<h:panelGrid columns="2">
+			#{msgs.bookName}
+			<h:inputText value="#{formBooks.bname}" />
+			
+			#{msgs.author}
+			<h:inputText value="#{formBooks.author}"/>
+			
+			#{msgs.pageNumber}
+			<h:inputText value="#{formBooks.page_number}" />
+			
+			#{msgs.firstEditionYear}
+			<h:inputText value="#{formBooks.first_edition_year}" />
+			
+			#{msgs.language}
+			<h:inputText value="#{formBooks.language}"/>
+			
+			#{msgs.category}
+			<h:inputText value="#{formBooks.category}" />
+			
+			#{msgs.publisher}
+			<h:inputText value="#{formBooks.publisher}" />
+			
+			#{msgs.price}
+			<h:inputText value="#{formBooks.price}"/>
+			
+			
+		</h:panelGrid>
+		<br/>
+		<h:commandButton value="#{msgs.buttonSave}" action="#{formBooks.save}" />
+		<h:commandButton value="#{msgs.buttonBooks}" action="#{formBooks.MyBooks}"></h:commandButton>
+	</h:form>
+	<br/>
+	#{formBooks.status}
+		</p:tab>
+		<p:tab title="Book list" >
+			 <ui:include src="BookList.xhtml"/>
+		</p:tab>
+		<p:tab title="User list" >
+			 <ui:include src="UserList.xhtml"/>
+		</p:tab>
+		
+		<p:tab title="Book List For Customers" >
+			 <ui:include src="BookListForClient.xhtml"/>
+		</p:tab>
+		
+		<p:tab title="Product Basket" >
+			 <ui:include src="ProductBasket.xhtml"/>
+		</p:tab>
+		
+		<p:tab title="Purchase" >
+			 <ui:include src="Purchase.xhtml"/>
+		</p:tab>
+		
+		
+	</p:tabView>
+</h:form>
+</h:body>
+</html>

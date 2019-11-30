@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:h="http://xmlns.jcp.org/jsf/html"
+	xmlns:f="http://xmlns.jcp.org/jsf/core">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+<link rel="stylesheet" href="style.css" type="text/css" />
+<link href="https://fonts.googleapis.com/css?family=Roboto+Condensed&amp;display=swap" rel="stylesheet" />
+<title>#{msgs.formLogin} </title>
+</head>
+<body>
+	<h2>#{msgs.formLoginTitle}</h2>
+
+	<h:form>
+		<h:panelGrid columns="2">
+			#{msgs.rEmailAddress}
+			<h:inputText value="#{userLogin.email}" />
+			
+			#{msgs.rPassword}
+			<h:inputSecret value="#{userLogin.password}"/>
+			
+		</h:panelGrid>
+		<br/>
+		<h:commandButton value="#{msgs.buttonLogin}" action="#{userLogin.Login}" />
+	    <h:commandButton value="#{msgs.buttonRegister}" action="Register?faces-redirect=true" />
+	</h:form>
+	
+	<br/>
+	 #{userLogin.message}
+	
+</body>
+</html>
