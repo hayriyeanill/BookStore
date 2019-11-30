@@ -10,6 +10,7 @@
 <title>#{msgs.formBigTitle} </title>
 </head>
 <body>
+<f:view locale="#{localeBean.currentLocale}">
 	<h2>#{msgs.formTitle}</h2>
 	<p>#{msgs.formText}</p>
 	<h:form>
@@ -36,15 +37,19 @@
 			<h:inputText value="#{formBooks.publisher}" />
 			
 			#{msgs.price}
-			<h:inputText value="#{formBooks.price}"/>
-			
-			
+			<h:inputText value="#{formBooks.price}"/>	
 		</h:panelGrid>
 		<br/>
+	
 		<h:commandButton value="#{msgs.buttonSave}" action="#{formBooks.save}" />
-		<h:commandButton value="#{msgs.buttonBooks}" action="#{formBooks.MyBooks}"></h:commandButton>
+		<h:commandButton value="#{msgs.buttonBooks}" action="#{formBooks.MyBooks}" />
 	</h:form>
-	<br/>
-	#{formBooks.status}
+		#{formBooks.status}
+		<hr/>
+	<h:form>
+			<h:commandLink action="#{localeBean.setEnglish}" value="#{msgs.langEN}" /> |
+			<h:commandLink action="#{localeBean.setTurkish}" value="#{msgs.langTR}" />
+		</h:form>
+	</f:view>
 </body>
 </html>
