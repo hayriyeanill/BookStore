@@ -1,0 +1,56 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:h="http://xmlns.jcp.org/jsf/html"
+	xmlns:f="http://xmlns.jcp.org/jsf/core">
+<!-- 	xmlns:mcv="http://myfaces.apache.org/commons/validators"> -->
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+<link rel="stylesheet" href="style.css" type="text/css" />
+<link href="https://fonts.googleapis.com/css?family=Roboto+Condensed&amp;display=swap" rel="stylesheet" />
+<title>Book Add </title>
+</head>
+<body>
+	<h2>Remove Book</h2>
+	<p>Please fill the following book form for delete books</p>
+	<h:form>
+		<h:inputHidden value="#{formBooks.price}" />
+		<h:panelGrid columns="3">
+			Book name:
+			<h:inputText value="#{formBooks.bname}" required="true" 
+			             requiredMessage="Enter book name." 
+			             validatorMessage="Enter at least 3, at most 25 chars." id="bname">
+				<f:validateLength minimum="3" maximum="25" />
+			</h:inputText>
+			<h:message for="bname" styleClass="error" />
+			
+			Author name:
+			<h:inputText value="#{formBooks.author}" required="true" 
+			             requiredMessage="Enter author name." 
+			             validatorMessage="Enter at least 3, at most 25 chars." id="author">
+				<f:validateLength minimum="3" maximum="25" />
+			</h:inputText>
+			<h:message for="author" styleClass="error" />
+			
+<!-- 			Edition Year: -->
+<!-- 			<h:inputText value="#{formBooks.first_edition_year}" required="true" -->
+<!-- 			             requiredMessage="Enter your birth date." -->
+<!-- 			             converterMessage="Enter a valid date (dd/mm/yyyy)" id="first_edition_year"> -->
+<!-- 				<f:convertDateTime pattern="dd/MM/yyyy" /> -->
+<!-- 			</h:inputText> -->
+<!-- 			<h:message for="first_edition_year" styleClass="error" /> -->
+			
+			Price:
+			<h:inputText value="#{formBooks.price}" id="price" disabled="true" />
+			<h:message for="price" styleClass="error" />
+			
+			
+			
+		</h:panelGrid>
+		<br/>
+		<h:commandButton value="Delete" action="#{formBooks.deleteBooks}" />
+		<br/><br/>
+		#{formBooks.status}
+	</h:form>
+</body>
+</html>
