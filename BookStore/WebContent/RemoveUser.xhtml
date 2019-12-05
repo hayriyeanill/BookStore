@@ -8,26 +8,31 @@
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
 <link rel="stylesheet" href="style.css" type="text/css" />
 <link href="https://fonts.googleapis.com/css?family=Roboto+Condensed&amp;display=swap" rel="stylesheet" />
-<title>#{msgs.formRemoveBook}</title>
+<title>#{msgs.formRemoveUser}</title>
 </head>
 <body>
 <f:view locale="#{localeBean.currentLocale}">
-	<h2>#{msgs.formRemoveBook}</h2>
+	<h2>#{msgs.formRemoveUser}</h2>
 	<h:form>
+		<h:inputHidden value="#{formUsers.email1}" />
+		<h:panelGrid columns="3">
+			#{msgs.rFullName}:
+			<h:inputText value="#{formUsers.fullName}" required="true" 
+			             requiredMessage="Enter user name." 
+			             validatorMessage="Enter at least 3, at most 25 chars." id="fullname">
+				<f:validateLength minimum="3" maximum="25" />
+			</h:inputText>
+			<h:message for="fullname" styleClass="error" />
 
-		<h:panelGrid columns="2">
-	<h:inputHidden value="#{formBooks.bname}"/>
-	<h:inputHidden value="#{formBooks.author}"/>
-			#{msgs.bookName}:
-			<h:inputText value="#{formBooks.bname}" disabled="true" />
-			#{msgs.author}:
-			<h:inputText value="#{formBooks.author}" disabled="true" />  
-			
+			#{msgs.rEmailAddress}:
+		<h:inputText value="#{formUsers.email1}" disabled="true" >
+			</h:inputText>
+			<h:message for="email1" styleClass="error" />
 		</h:panelGrid>
 		<br/>
-		<h:commandButton value="#{msgs.buttonDelete}" action="#{formBooks.deleteBooks}" />
+		<h:commandButton value="#{msgs.buttonDelete}" action="#{formUsers.deleteUsers}" />
 		<br/><br/>
-		#{formBooks.status}
+		#{formUsers.message}
 	</h:form>
 	
 	 <h:form>

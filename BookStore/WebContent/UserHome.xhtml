@@ -1,0 +1,143 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:p="http://primefaces.org/ui">
+	
+<h:head>
+<link rel="stylesheet" href="style.css" type="text/css" />
+</h:head>
+<h:body>  
+
+     
+<f:view locale="#{localeBean.currentLocale}">
+<h:form id="form" style="width:1300px">  
+<p:growl id="msgs" showDetail="true" />  
+<h3 style="margin-top:0">Online Book Store</h3>  
+	<p:growl id="message"></p:growl>
+   
+	<p:tabView activeIndex="#{tabViewManagedBean.index}" dynamic="true" cache="false">
+		<p:tab  title="#{msgs.homeBookList}" >
+	<h2>#{msgs.formBookList}</h2>
+	<h:outputText value="#{formBooks.books}" escape="false" />
+
+		</p:tab>
+		
+		<p:tab title="#{msgs.homeMyBookList}" >
+		<h2>#{msgs.formBookList}</h2>
+	<h:form>
+	
+	 <h:outputText value="#{formBooks.books}" escape="false" /> 
+	<h:commandButton value="#{msgs.buttonAddtoBasket}" action="#{purchase.AddToBasket}"></h:commandButton>
+	<h:commandButton value="#{msgs.buttonAddMore}" action="#{purchase.AddMore}"></h:commandButton>
+	 </h:form>
+		</p:tab>
+		
+		<p:tab title="#{msgs.homeProductBasket}" >
+		<h2>#{msgs.formMyBasket}</h2>
+	<h:form>	
+	<h:outputText value="#{formBooks.books}" escape="false"></h:outputText> 
+	<h:commandButton value="#{msgs.buttonBuy}" action="#{purchase.PurchaseScreen}"> </h:commandButton>
+	<h:commandButton value="#{msgs.buttonBack}" action="#{purchase.Back}"></h:commandButton>
+	</h:form>
+		</p:tab>
+		
+			<p:tab title="#{msgs.homePurchase}">
+		<h2>#{msgs.formProductPurchaseText}</h2>
+	<h:form>	
+	 <h:panelGrid columns="3">
+	 #{msgs.purchaseFullName}
+	  <h:inputText value="#{purchase.fullName}" required="true" requiredMessage="Enter your full name."
+     validatorMessage="Enter at least 3, at most 25 chars" id="fullName">
+     <f:validateLength minimum="3" maximum="25" />
+      </h:inputText>
+     <h:message for="fullName" styleClass="error" />
+	 
+	 #{msgs.purchaseCreditCard}     
+	  <h:inputText value="#{purchase.creditCardNumber}" required="true" requiredMessage="Enter the four-digit expiration date of your credit card."
+     validatorMessage="Credit card number must be 16-digit."  id="CreditCardNumber">
+
+      </h:inputText>
+     <h:message for="CreditCardNumber" styleClass="error" />
+     
+	   #{msgs.purchaseMonthYear}:     
+	  <h:inputText value="#{purchase.yearMonth}" required="true" requiredMessage="Enter your 16-digit credit card number."
+     validatorMessage="Credit card expiration date must be 4-digit."  id="yearMonth">
+
+      </h:inputText>
+     <h:message for="yearMonth" styleClass="error" />
+	 
+      
+	  #{msgs.purchaseCSV}:
+	  <h:inputText value="#{purchase.csv}" required="true" requiredMessage="Enter your secure code."
+     validatorMessage="Security code must be 3-digit."  id="csv">
+
+      </h:inputText>
+     <h:message for="csv" styleClass="error" />
+     </h:panelGrid>
+
+	 <br/>
+	 <h:panelGrid column="2"> 
+        #{msgs.purchaseText}:
+	  <h:inputText value="#{purchase.purchaseAddress}" required="true" requiredMessage="Enter your address where your cargo and invoice will be delivered."
+      validatorMessage="Enter at least 3, at most 50 chars"  id="purchaseAddress">
+          <f:validateLength minimum="3" maximum="50" />
+      </h:inputText>
+     <h:message for="purchaseAddress" styleClass="error" />
+     </h:panelGrid>
+	
+	 <br/>
+	<br/>
+	<h:commandButton value="#{msgs.buttonFinish}  " action="#{purchase.BuyForm}"/> |
+	<h:commandButton value="#{msgs.buttonBack}  " action="#{purchase.BackToBasket}"/>
+	 <br/><br/>
+	</h:form>
+	#{purchase.message}
+		</p:tab>
+		
+			<p:tab title="#{msgs.homeUserInfo}">
+		
+	<h:form>
+	<h:inputHidden value="#{formUsers.email1}"/>
+		<h:panelGrid columns="3">
+			#{msgs.rFullName}
+			<h:inputText value="#{formUsers.fullName}" required="true"  requiredMessage="Enter your name."
+     validatorMessage="Enter at least 3, at most 25 chars" id="fullName">
+     <f:validateLength minimum="3" maximum="25" />
+      </h:inputText>
+     <h:message for="fullName" styleClass="error" />		
+			#{msgs.rPassword}
+			<h:inputSecret value="#{formUsers.password}" required="true" requiredMessage="Password must enter."
+     validatorMessage="Password must contain at least one number and one uppercase and lowercase letter, and at least 8 or more characters "  id="password"> 
+        <f:validateRegex pattern="(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{8,}" />
+         </h:inputSecret>
+           <h:message for="password" styleClass="error" />
+					
+			#{msgs.rEmailAddress}
+			<h:inputText value="#{formUsers.email1}" disabled="true" >
+			</h:inputText>
+			<h:message for="email1" styleClass="error" />
+		</h:panelGrid>
+		<br/>
+		<h:commandButton value="#{msgs.buttonUpdate}" action="#{formUsers.updateUsers}" />
+		<br/><br/>
+		#{formUsers.message}
+	</h:form>
+		</p:tab>	
+	</p:tabView>
+	 
+</h:form>
+    <h:form>
+			<h:commandLink action="#{localeBean.setEnglish}" value="#{msgs.langEN}" /> |
+			<h:commandLink action="#{localeBean.setTurkish}" value="#{msgs.langTR}" />
+			<h:commandButton value="#{msgs.buttonLogout}"  action="#{userLogin.logout}" style="float:right;"  />
+		</h:form>
+		
+		 
+	</f:view>
+	
+
+</h:body>
+</html>

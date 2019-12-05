@@ -10,13 +10,17 @@
 <link rel="stylesheet" href="style.css" type="text/css" />
 </h:head>
 <h:body>  
+
+     
+<f:view locale="#{localeBean.currentLocale}">
 <h:form id="form" style="width:1300px">  
 <p:growl id="msgs" showDetail="true" />  
 <h3 style="margin-top:0">Online Book Store</h3>  
 	<p:growl id="message"></p:growl>
+   
 	<p:tabView activeIndex="#{tabViewManagedBean.index}" dynamic="true" cache="false">
 
-		<p:tab  title="Book Add" >
+		<p:tab  title="#{msgs.homeBookAdd}" >
 				<h:form>
 		<h:panelGrid columns="2">
 			#{msgs.bookName}
@@ -47,32 +51,63 @@
 		</h:panelGrid>
 		<br/>
 		<h:commandButton value="#{msgs.buttonSave}" action="#{formBooks.save}" />
-		<h:commandButton value="#{msgs.buttonBooks}" action="#{formBooks.MyBooks}"></h:commandButton>
+		
 	</h:form>
 	<br/>
 	#{formBooks.status}
 		</p:tab>
-		<p:tab title="Book list" >
-			 <ui:include src="BookList.xhtml"/>
+		<p:tab title="#{msgs.homeBookList}" >
+		<h2>#{msgs.formRegisteredBooks}</h2>
+	<h:form>
+		<ui:repeat var="u" value="#{formBooks.booksList}" varStatus="status">
+		<p>
+		
+		<h:commandButton value="#{msgs.buttonEdit}" action="#{formBooks.editBooks(u.bname)}"/> |
+		<h:commandButton value="#{msgs.buttonDelete}" action="#{formBooks.RemoveBooks(u.bname)}"/> 
+		
+		#{u.bname}
+		#{u.author}
+		#{u.page_number}
+		#{u.first_edition_year}
+		#{u.language}
+		#{u.category}
+		#{u.publisher}
+		#{u.price}</p>
+		 <br/>
+
+		</ui:repeat>
+	</h:form>
 		</p:tab>
-		<p:tab title="User list" >
-			 <ui:include src="UserList.xhtml"/>
+		<p:tab title="#{msgs.homeUserList}" >
+		<h2>#{msgs.formRegisteredUsers}</h2>
+	<h:form>
+		<ui:repeat var="u" value="#{formUsers.userList}" varStatus="message">
+		<p>
+		<h:commandButton value="#{msgs.buttonEdit}" action="#{formUsers.editUsers(u.email1)}"/> |
+		<h:commandButton value="#{msgs.buttonDelete}" action="#{formUsers.RemoveUsers(u.email1)}"/>
+		#{u.fullName}
+		#{u.email1}</p>
+		 <br/>
+		
+		</ui:repeat>
+	</h:form>
 		</p:tab>
 		
-		<p:tab title="Book List For Customers" >
-			 <ui:include src="BookListForClient.xhtml"/>
-		</p:tab>
-		
-		<p:tab title="Product Basket" >
-			 <ui:include src="ProductBasket.xhtml"/>
-		</p:tab>
-		
-		<p:tab title="Purchase" >
-			 <ui:include src="Purchase.xhtml"/>
-		</p:tab>
-		
-		
+		 <h:commandButton value="Logout"  action="#{userLogin.logout}"  />
+	
 	</p:tabView>
+	 	
 </h:form>
+	
+    <h:form>
+			<h:commandLink action="#{localeBean.setEnglish}" value="#{msgs.langEN}" /> |
+			<h:commandLink action="#{localeBean.setTurkish}" value="#{msgs.langTR}" />
+		     <h:commandButton value="#{msgs.buttonLogout}"  action="#{userLogin.logout}" style="float:right;"  />
+		</h:form>
+		
+		 
+	</f:view>
+	
+
 </h:body>
 </html>

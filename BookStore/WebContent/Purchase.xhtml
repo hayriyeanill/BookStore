@@ -10,23 +10,66 @@
 <title>#{msgs.formProductPurchase}</title>
 </head>
 <body>
+ <f:view locale="#{localeBean.currentLocale}">
 	<h2>#{msgs.formProductPurchaseText}</h2>
 	<h:form>	
-	 <!--  <h:outputText value="#{formBooks.books}" escape="false"></h:outputText> -->
-	 <h:panelGrid columns="2">
-	 #{msgs.purchaseFandLname}
-	 <h:inputText ></h:inputText>
+	 <h:panelGrid columns="3">
+	 #{msgs.purchaseFullName}
+	  <h:inputText value="#{purchase.fullName}" required="true" requiredMessage="Enter your full name."
+     validatorMessage="Enter at least 3, at most 25 chars" id="fullName">
+     <f:validateLength minimum="3" maximum="25" />
+      </h:inputText>
+     <h:message for="fullName" styleClass="error" />
 	 
 	 #{msgs.purchaseCreditCard}     
-	 <h:inputText></h:inputText>
+	  <h:inputText value="#{purchase.creditCardNumber}" required="true" requiredMessage="Enter the four-digit expiration date of your credit card."
+     validatorMessage="Credit card number must be 16-digit."  id="CreditCardNumber">
+
+      </h:inputText>
+     <h:message for="CreditCardNumber" styleClass="error" />
+     
+	   #{msgs.purchaseMonthYear}:     
+	  <h:inputText value="#{purchase.yearMonth}" required="true" requiredMessage="Enter your 16-digit credit card number."
+     validatorMessage="Credit card expiration date must be 4-digit."  id="yearMonth">
+
+      </h:inputText>
+     <h:message for="yearMonth" styleClass="error" />
 	 
-	 #{msgs.purchaseAddress}    
-	 <h:inputText></h:inputText>
+      
+	  #{msgs.purchaseCSV}:
+	  <h:inputText value="#{purchase.csv}" required="true" requiredMessage="Enter your secure code."
+     validatorMessage="Security code must be 3-digit."  id="csv">
+
+      </h:inputText>
+     <h:message for="csv" styleClass="error" />
+     </h:panelGrid>
+
+	 <br/>
+	 <h:panelGrid column="2"> 
+        #{msgs.purchaseText}:
+	  <h:inputText value="#{purchase.purchaseAddress}" required="true" requiredMessage="Enter your address where your cargo and invoice will be delivered."
+      validatorMessage="Enter at least 3, at most 50 chars"  id="purchaseAddress">
+          <f:validateLength minimum="3" maximum="50" />
+      </h:inputText>
+     <h:message for="purchaseAddress" styleClass="error" />
+     </h:panelGrid>
 	
-	</h:panelGrid>
+	 <br/>
 	<br/>
-	<h:commandButton value="#{msgs.buttonFinish}  " > </h:commandButton>
-	<h:commandButton value="#{msgs.buttonBack}  " action="#{formBooks.BackToBasket}"></h:commandButton>
+	<h:commandButton value="#{msgs.buttonFinish}  " action="#{purchase.BuyForm}"/> |
+	<h:commandButton value="#{msgs.buttonBack}  " action="#{purchase.BackToBasket}"/>
+	 <br/><br/>
 	</h:form>
+	#{purchase.message}
+	
+	 <h:form>
+			<h:commandLink action="#{localeBean.setEnglish}" value="#{msgs.langEN}" /> |
+			<h:commandLink action="#{localeBean.setTurkish}" value="#{msgs.langTR}" />
+			
+		</h:form>
+		
+		 
+	</f:view>
+	
 </body>
 </html>

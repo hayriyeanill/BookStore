@@ -10,14 +10,18 @@
 <title>#{msgs.formBooksTitle}</title>
 </head>
 <body>
+
     <f:view locale="#{localeBean.currentLocale}">
 	<h2>#{msgs.formBookList}</h2>
 	<h:outputText value="#{formBooks.books}" escape="false" />
 	
+	
+	 
 	<h:form>
-			<h:commandLink action="#{localeBean.setEnglish}" value="#{msgs.langEN}" /> |
+			<h:commandLink action="#{localeBean.setEnglish}" value="#{msgs.langEN}" /> 
 			<h:commandLink action="#{localeBean.setTurkish}" value="#{msgs.langTR}" />
 		</h:form>
+		
 		</f:view>
 </body>
 </html>

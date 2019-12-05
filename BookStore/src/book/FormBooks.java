@@ -1,4 +1,4 @@
-package book;
+ package book;
 import java.util.List;
 import java.util.ResourceBundle;
 import javax.faces.bean.*;
@@ -75,30 +75,26 @@ public String editBooks(String bname) {
 	return "UpdateBook";
 }
 
-public String AddToBasket() {
-	 
-	 JOptionPane.showMessageDialog(null,"Products have been added successfully you pick" ,"INFORMATION", 
-			 JOptionPane.INFORMATION_MESSAGE);
-	return "ProductBasket"; //ProductBasket.xhtml
-		
-}
+public String deleteBooks(){
+	DataAccess.deleteData(getBname(),getAuthor());
+	return "listBook";
+	//page_number, first_edition_year, language, category, publisher, price
 
-public String MyBooks() {
-	 return "BookListForClient";
-}
-public String AddMore() {
-	 return "AddBook";
-}
+	}
 
-public String Back() {
-	 return "BookListForClient";
-}
- public String PurchaseScreen() {
-	  return "Purchase";
- }
- public String BackToBasket() {
-		 return "ProductBasket";
-	 }
+	public String RemoveBooks(String bname) {
+		Books u = DataAccess.findBooks(bname);
+		this.setBname(u.getBname());
+		this.setAuthor(u.getAuthor());
+		this.setPage_number(u.getPage_number());
+		this.setFirst_edition_year(u.getFirst_edition_year());
+		this.setLanguage(u.getLanguage());
+		this.setCategory(u.getCategory());
+		this.setPublisher(u.getPublisher());
+		this.setPrice(u.getPrice());	
+		return "RemoveBook" ;
+	}
+	
 
 
 }

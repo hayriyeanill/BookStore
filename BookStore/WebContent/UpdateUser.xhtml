@@ -11,6 +11,7 @@
 <title>#{msgs.formEditUser}</title>
 </head>
 <h:body>
+<f:view locale="#{localeBean.currentLocale}">
 	<h2>#{msgs.formEditUser}</h2>
 	<h:form>
 	<h:inputHidden value="#{formUsers.email1}"/>
@@ -38,5 +39,15 @@
 		<br/><br/>
 		#{formUsers.message}
 	</h:form>
+	
+	 <h:form>
+			<h:commandLink action="#{localeBean.setEnglish}" value="#{msgs.langEN}" /> |
+			<h:commandLink action="#{localeBean.setTurkish}" value="#{msgs.langTR}" />
+			
+		</h:form>
+		
+		 
+	</f:view>
+	
 </h:body>
 </html>

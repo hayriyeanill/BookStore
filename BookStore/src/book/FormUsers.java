@@ -51,6 +51,8 @@ public class FormUsers extends Users {
 	public void setMessage(String message) {
 		this.message = message;
 	}
+	
+
 
 	public void checkEmail(FacesContext context, UIComponent componentToValidate, Object value) throws ValidatorException {
 		// Check whether the e-mail address has been used before.
@@ -79,6 +81,22 @@ public class FormUsers extends Users {
 		DataAccess.updateUserData(getFullName(), getPassword(), getEmail1());
 		return "listUser";
 	}
+	
+	public String deleteUsers(){
+		DataAccess.deleteUser(getEmail1());
+		return "listUser";
+		//page_number, first_edition_year, language, category, publisher, price
+
+		}
+	
+	public String RemoveUsers(String email1) {
+		Users u = DataAccess.findUser(email1);
+		this.setFullName(u.getFullName());
+		this.setPassword(u.getPassword());
+		this.setEmail1(u.getEmail1());
+		return "RemoveUser";
+	}
+	
 
 	public String editUsers(String email1) {
 		Users u = DataAccess.findUser(email1);
@@ -88,4 +106,6 @@ public class FormUsers extends Users {
 		
 		return "UpdateUser";
 	}
+	
+	
 }

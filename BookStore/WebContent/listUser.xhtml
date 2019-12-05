@@ -11,17 +11,28 @@
 <title>#{msgs.formRegisteredUsers}</title>
 </head>
 <h:body>
-	<h2>#{msgs.formRegisteredUsers}</h2>
+<f:view locale="#{localeBean.currentLocale}">
+		<h2>#{msgs.formRegisteredUsers}</h2>
 	<h:form>
 		<ui:repeat var="u" value="#{formUsers.userList}" varStatus="message">
 		<p>
-		
-		<h:commandLink value="#{msgs.buttonEdit}" action="#{formUsers.editUsers(u.email1)}"/>
+		<h:commandButton value="#{msgs.buttonEdit}" action="#{formUsers.editUsers(u.email1)}"/> |
+		<h:commandButton value="#{msgs.buttonDelete}" action="#{formUsers.RemoveUsers(u.email1)}"/>
 		#{u.fullName}
 		#{u.email1}</p>
-			<h:outputText value="Displaying #{message.index+1} users" 
-			rendered="#{message.last}"/>
+		 <br/>
+			
 		</ui:repeat>
 	</h:form>
+	
+		 <h:form>
+			<h:commandLink action="#{localeBean.setEnglish}" value="#{msgs.langEN}" /> |
+			<h:commandLink action="#{localeBean.setTurkish}" value="#{msgs.langTR}" />
+			
+		</h:form>
+		
+		 
+	</f:view>
+	
 </h:body>
 </html>

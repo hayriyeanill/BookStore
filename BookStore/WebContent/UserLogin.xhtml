@@ -10,6 +10,7 @@
 <title>#{msgs.formLogin} </title>
 </head>
 <body>
+<f:view locale="#{localeBean.currentLocale}">
 	<h2>#{msgs.formLoginTitle}</h2>
 
 	<h:form>
@@ -28,6 +29,15 @@
 	
 	<br/>
 	 #{userLogin.message}
+	
+	 <h:form>
+			<h:commandLink action="#{localeBean.setEnglish}" value="#{msgs.langEN}" /> |
+			<h:commandLink action="#{localeBean.setTurkish}" value="#{msgs.langTR}" />
+			
+		</h:form>
+		
+		 
+	</f:view>
 	
 </body>
 </html>

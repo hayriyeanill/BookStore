@@ -10,11 +10,22 @@
 <title>#{msgs.formProductBasket}</title>
 </head>
 <body>
+ <f:view locale="#{localeBean.currentLocale}">
 	<h2>#{msgs.formMyBasket}</h2>
 	<h:form>	
 	<h:outputText value="#{formBooks.books}" escape="false"></h:outputText> 
-	<h:commandButton value="#{msgs.buttonBuy}" action="#{formBooks.PurchaseScreen}"> </h:commandButton>
-	<h:commandButton value="#{msgs.buttonBack}" action="#{formBooks.Back}"></h:commandButton>
+	<h:commandButton value="#{msgs.buttonBuy}" action="#{purchase.PurchaseScreen}"> </h:commandButton>
+	<h:commandButton value="#{msgs.buttonBack}" action="#{purchase.Back}"></h:commandButton>
 	</h:form>
+	
+	 <h:form>
+			<h:commandLink action="#{localeBean.setEnglish}" value="#{msgs.langEN}" /> |
+			<h:commandLink action="#{localeBean.setTurkish}" value="#{msgs.langTR}" />
+		
+		</h:form>
+		
+		 
+	</f:view>
+	
 </body>
 </html>

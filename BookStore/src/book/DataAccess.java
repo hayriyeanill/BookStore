@@ -44,7 +44,7 @@ public class DataAccess {
 		try {
 			Connection connection = getConnection();
 			Statement statement = connection.createStatement();
-			String sql = "DELETE FROM Books";
+			String sql = "DELETE FROM Users";
 
 			statement.executeUpdate(sql);
 	
@@ -153,6 +153,45 @@ public class DataAccess {
 		
 		return result;
 	}
+	
+	public static boolean deleteData(String bname,String author) {
+		try{
+		Connection connection = getConnection();
+		String sql = "DELETE FROM Books WHERE bname=? and author=?";
+		PreparedStatement statement = connection.prepareStatement(sql);
+		statement.setString(1, bname);
+		statement.setString(2, author);
+		/*
+		 * statement.setString(2, author); statement.setString(3, page_number);
+		 * statement.setString(4, first_edition_year); statement.setString(5, language);
+		 * statement.setString(6, category); statement.setString(7, publisher);
+		 * statement.setString(8, price);
+		 */
+		statement.executeUpdate();
+		connection.close();
+		return true;
+	} catch (Exception e) {
+		e.printStackTrace();
+		return false;
+	}
+}
+	
+	public static boolean deleteUser(String email){
+		try{
+			Connection connection = getConnection();
+			String sql = "DELETE FROM Users WHERE email=?";
+			PreparedStatement statement = connection.prepareStatement(sql);
+			statement.setString(1, email);
+			statement.executeUpdate();
+			connection.close();
+			return true;
+		} catch (Exception e) {
+			e.printStackTrace();
+			return false;
+		}
+	}
+	
+	
 	
 	public static boolean isEmailSavedBefore(String email){
 		boolean result = true;

@@ -10,7 +10,17 @@
 <title>#{msgs.formUsers}</title>
 </head>
 <body>
+<f:view locale="#{localeBean.currentLocale}">
 	<h2>#{msgs.formUserList}</h2>
 	<h:outputText value="#{formUsers.users}" escape="false" />
+	
+	 <h:form>
+			<h:commandLink action="#{localeBean.setEnglish}" value="#{msgs.langEN}" /> |
+			<h:commandLink action="#{localeBean.setTurkish}" value="#{msgs.langTR}" />
+			
+		</h:form>
+		
+		 
+	</f:view>
 </body>
 </html>

@@ -11,12 +11,15 @@
 <title>#{msgs.formRegisteredBooks}</title>
 </head>
 <h:body>
+<f:view locale="#{localeBean.currentLocale}">
 	<h2>#{msgs.formRegisteredBooks}</h2>
 	<h:form>
 		<ui:repeat var="u" value="#{formBooks.booksList}" varStatus="status">
 		<p>
 		
-		<h:commandLink value="#{msgs.buttonEdit}" action="#{formBooks.editBooks(u.bname)}"/>
+		<h:commandButton value="#{msgs.buttonEdit}" action="#{formBooks.editBooks(u.bname)}"/> |
+		<h:commandButton value="#{msgs.buttonDelete}" action="#{formBooks.RemoveBooks(u.bname)}"/> 
+		
 		#{u.bname}
 		#{u.author}
 		#{u.page_number}
@@ -25,9 +28,19 @@
 		#{u.category}
 		#{u.publisher}
 		#{u.price}</p>
-			<h:outputText value="Displaying #{status.index+1} books." 
-			rendered="#{status.last}"/>
+		 <br/>
+		
 		</ui:repeat>
 	</h:form>
+	
+		 <h:form>
+			<h:commandLink action="#{localeBean.setEnglish}" value="#{msgs.langEN}" /> |
+			<h:commandLink action="#{localeBean.setTurkish}" value="#{msgs.langTR}" />
+			
+		</h:form>
+		
+		 
+	</f:view>
+	
 </h:body>
 </html>
