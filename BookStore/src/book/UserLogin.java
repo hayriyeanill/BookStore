@@ -8,7 +8,7 @@ import javax.faces.context.FacesContext;
 
 @ManagedBean
 
-public class UserLogin {
+public class UserLogin extends FormUsers {
  private String email;
  private String password;
  private String message;
@@ -59,6 +59,8 @@ public void setMessage(String message) {
         return "UserLogin";
 }
 
+ 
+	
 
 
  

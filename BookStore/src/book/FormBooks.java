@@ -3,12 +3,11 @@ import java.util.List;
 import java.util.ResourceBundle;
 import javax.faces.bean.*;
 import javax.faces.context.FacesContext;
-import javax.swing.JOptionPane;
 import book.DataAccess;
 
 
 @ManagedBean
-public class FormBooks extends Books {
+public class FormBooks extends Books  {
    
    private String status;
    
@@ -57,7 +56,7 @@ public String save(){
 
 public String updateBooks() {
 	DataAccess.updateBookData(getAuthor(), getPage_number(), getFirst_edition_year(), getLanguage(), getCategory(), getPublisher(), getPrice(),getBname());
-	return "listBook";
+	return "AdminHome";
 }
 
 public String editBooks(String bname) {
@@ -71,13 +70,12 @@ public String editBooks(String bname) {
 	this.setPublisher(u.getPublisher());
 	this.setPrice(u.getPrice());
 	
- 
 	return "UpdateBook";
 }
 
 public String deleteBooks(){
 	DataAccess.deleteData(getBname(),getAuthor());
-	return "listBook";
+	return "AdminHome";
 	//page_number, first_edition_year, language, category, publisher, price
 
 	}

@@ -7,7 +7,7 @@ import javax.faces.bean.SessionScoped;
 @SessionScoped
 public class TabViewManagedBean {
 	private int index = 0;
-
+	
 	public int getIndex() {
 		return index;
 	}
@@ -15,4 +15,6 @@ public class TabViewManagedBean {
 	public void setIndex(int index) {
 		this.index = index;
 	}
+
+
 }

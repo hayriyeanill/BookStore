@@ -8,20 +8,28 @@
 	
 <h:head>
 <link rel="stylesheet" href="style.css" type="text/css" />
+<script name="jquery/jquery.js" library="primefaces"></script>
+	<script>
+		function showTab(index){
+			PF('tabView').select(index);
+		}
+	</script>
+	
 </h:head>
-<h:body>  
+<h:body>  	
 
-     
 <f:view locale="#{localeBean.currentLocale}">
 <h:form id="form" style="width:1300px">  
 <p:growl id="msgs" showDetail="true" />  
 <h3 style="margin-top:0">Online Book Store</h3>  
 	<p:growl id="message"></p:growl>
    
-	<p:tabView activeIndex="#{tabViewManagedBean.index}" dynamic="true" cache="false">
+	<p:tabView id="tabView" activeIndex="#{tabViewManagedBean.index}" dynamic="true" cache="false" widgetVar="tabView">
 
 		<p:tab  title="#{msgs.homeBookAdd}" >
-				<h:form>
+			<h2>#{msgs.formTitle}</h2>
+	<p>#{msgs.formText}</p>
+	<h:form>
 		<h:panelGrid columns="2">
 			#{msgs.bookName}
 			<h:inputText value="#{formBooks.bname}" />
@@ -45,16 +53,14 @@
 			<h:inputText value="#{formBooks.publisher}" />
 			
 			#{msgs.price}
-			<h:inputText value="#{formBooks.price}"/>
-			
-			
+			<h:inputText value="#{formBooks.price}"/>	
 		</h:panelGrid>
 		<br/>
+	
 		<h:commandButton value="#{msgs.buttonSave}" action="#{formBooks.save}" />
 		
 	</h:form>
-	<br/>
-	#{formBooks.status}
+		#{formBooks.status}
 		</p:tab>
 		<p:tab title="#{msgs.homeBookList}" >
 		<h2>#{msgs.formRegisteredBooks}</h2>
@@ -62,7 +68,7 @@
 		<ui:repeat var="u" value="#{formBooks.booksList}" varStatus="status">
 		<p>
 		
-		<h:commandButton value="#{msgs.buttonEdit}" action="#{formBooks.editBooks(u.bname)}"/> |
+		<h:commandButton value="#{msgs.buttonEdit}" action="#{formBooks.editBooks(u.bname)}" /> |
 		<h:commandButton value="#{msgs.buttonDelete}" action="#{formBooks.RemoveBooks(u.bname)}"/> 
 		
 		#{u.bname}
@@ -78,12 +84,14 @@
 		</ui:repeat>
 	</h:form>
 		</p:tab>
+		
 		<p:tab title="#{msgs.homeUserList}" >
 		<h2>#{msgs.formRegisteredUsers}</h2>
 	<h:form>
 		<ui:repeat var="u" value="#{formUsers.userList}" varStatus="message">
 		<p>
-		<h:commandButton value="#{msgs.buttonEdit}" action="#{formUsers.editUsers(u.email1)}"/> |
+		<p:commandButton value="Show Tab 1" type="button"  onclick="showTab(0);"></p:commandButton>
+		<h:commandButton value="#{msgs.buttonEdit}" action="#{formUsers.editUsers(u.email1)}" /> |
 		<h:commandButton value="#{msgs.buttonDelete}" action="#{formUsers.RemoveUsers(u.email1)}"/>
 		#{u.fullName}
 		#{u.email1}</p>

@@ -22,31 +22,31 @@
      <h:message for="fullName" styleClass="error" />
 	 
 	 #{msgs.purchaseCreditCard}     
-	  <h:inputText value="#{purchase.creditCardNumber}" required="true" requiredMessage="Enter the four-digit expiration date of your credit card."
-     validatorMessage="Credit card number must be 16-digit."  id="CreditCardNumber">
-
+	  <h:inputText value="#{purchase.creditCardNumber}" required="true" requiredMessage="Enter your 16-digit credit card number." 
+     validatorMessage="Credit card number must be 16-digit."  id="CreditCardNumber" >
+      <f:validateLength minimum="16" />
       </h:inputText>
      <h:message for="CreditCardNumber" styleClass="error" />
      
-	   #{msgs.purchaseMonthYear}:     
-	  <h:inputText value="#{purchase.yearMonth}" required="true" requiredMessage="Enter your 16-digit credit card number."
+	   #{msgs.purchaseMonthYear}   
+	  <h:inputText value="#{purchase.yearMonth}" required="true" requiredMessage="Enter the four-digit expiration date of your credit card."
      validatorMessage="Credit card expiration date must be 4-digit."  id="yearMonth">
-
+        <f:convertDateTime pattern="MM/yy" />
       </h:inputText>
      <h:message for="yearMonth" styleClass="error" />
 	 
       
-	  #{msgs.purchaseCSV}:
+	  #{msgs.purchaseCSV}
 	  <h:inputText value="#{purchase.csv}" required="true" requiredMessage="Enter your secure code."
      validatorMessage="Security code must be 3-digit."  id="csv">
-
+         <f:validateLength minimum="3" />
       </h:inputText>
      <h:message for="csv" styleClass="error" />
      </h:panelGrid>
 
 	 <br/>
 	 <h:panelGrid column="2"> 
-        #{msgs.purchaseText}:
+        #{msgs.purchaseText}
 	  <h:inputText value="#{purchase.purchaseAddress}" required="true" requiredMessage="Enter your address where your cargo and invoice will be delivered."
       validatorMessage="Enter at least 3, at most 50 chars"  id="purchaseAddress">
           <f:validateLength minimum="3" maximum="50" />
@@ -56,8 +56,8 @@
 	
 	 <br/>
 	<br/>
-	<h:commandButton value="#{msgs.buttonFinish}  " action="#{purchase.BuyForm}"/> |
-	<h:commandButton value="#{msgs.buttonBack}  " action="#{purchase.BackToBasket}"/>
+	<h:commandButton value="#{msgs.buttonFinish}  " action="#{purchase.BuyForm}"/> 
+	
 	 <br/><br/>
 	</h:form>
 	#{purchase.message}

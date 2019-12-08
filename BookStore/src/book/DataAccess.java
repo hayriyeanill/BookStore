@@ -28,9 +28,9 @@ public class DataAccess {
 				  +	"fullname VARCHAR(25), email VARCHAR(50), password VARCHAR(50))";
 					  
 			statement.execute(sql);
-			System.out.println(sql.toString());
+			
 			statement.execute(sql2);
-			System.out.println(sql2.toString());
+	
 			connection.close();
 			return true;
 

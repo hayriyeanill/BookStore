@@ -79,12 +79,12 @@ public class FormUsers extends Users {
 	
 	public String updateUsers() {
 		DataAccess.updateUserData(getFullName(), getPassword(), getEmail1());
-		return "listUser";
+		return "AdminHome";
 	}
 	
 	public String deleteUsers(){
 		DataAccess.deleteUser(getEmail1());
-		return "listUser";
+		return "AdminHome";
 		//page_number, first_edition_year, language, category, publisher, price
 
 		}
@@ -106,6 +106,7 @@ public class FormUsers extends Users {
 		
 		return "UpdateUser";
 	}
+	
 	
 	
 }
