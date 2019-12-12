@@ -101,7 +101,7 @@ public class DataAccess {
 			Connection connection = getConnection();
 			Statement statement = connection.createStatement();
 			String query = "SELECT * FROM Books";
-			System.out.println(query.toString());
+	
 			
 			ResultSet rs = statement.executeQuery(query);		
 			
@@ -359,7 +359,27 @@ public class DataAccess {
 			return null;
 		}
 	}
-
+	
+	
+	public static List<Books> selectBook(){
+		List<Books> result = new ArrayList<Books>();
+		
+		try{
+			Connection connection = getConnection();
+			Statement statement = connection.createStatement();
+			String sql = "SELECT bname FROM Books";
+			ResultSet rs = statement.executeQuery(sql);
+			while(rs.next()) 
+				result.add(new Books(rs.getString("bname")));
+			connection.close();
+			}catch (Exception e) {
+			e.printStackTrace();
+		}
+		System.out.println(result);
+		return result;
+	}
+	
+	
 	
 }
 

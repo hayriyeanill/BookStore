@@ -90,7 +90,7 @@
 	<h:form>
 		<ui:repeat var="u" value="#{formUsers.userList}" varStatus="message">
 		<p>
-		<p:commandButton value="Show Tab 1" type="button"  onclick="showTab(0);"></p:commandButton>
+	
 		<h:commandButton value="#{msgs.buttonEdit}" action="#{formUsers.editUsers(u.email1)}" /> |
 		<h:commandButton value="#{msgs.buttonDelete}" action="#{formUsers.RemoveUsers(u.email1)}"/>
 		#{u.fullName}

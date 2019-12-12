@@ -14,6 +14,10 @@
 	<h2>#{msgs.formMyBasket}</h2>
 	<h:form>	
 	<h:outputText value="#{formBooks.books}" escape="false"></h:outputText> 
+    <h:inputText value="#{formBooks.selectedbook}" escape="false" />
+ 
+ <h:commandButton action="#{formBooks.NextStep}" value="Select"> </h:commandButton>
+    
 
 	</h:form>
 	

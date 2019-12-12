@@ -70,12 +70,15 @@ public class FormUsers extends Users {
 		ResourceBundle rb = fc.getApplication().getResourceBundle(fc, "msgs");
 		
 				if (DataAccess.saveUserData(getFullName(), getPassword(), getEmail1()))
-					message = rb.getString("WelcomeMessage"); //this.message = "Hi " + fullName.toString() + " Your registration was successfully completed";	
+					return "UserLogin";
+					//message = rb.getString("WelcomeMessage"); //this.message = "Hi " + fullName.toString() + " Your registration was successfully completed";	
 				else
 					message = rb.getString("ErrorMessage"); //this.message = "Sorry. Unable to completed registration. Please try again.";
 			
 				return null;	
 	}
+	
+	
 	
 	public String updateUsers() {
 		DataAccess.updateUserData(getFullName(), getPassword(), getEmail1());
@@ -107,6 +110,8 @@ public class FormUsers extends Users {
 		return "UpdateUser";
 	}
 	
-	
+	 public String BackLogin() {
+		 return "UserLogin";
+	 }
 	
 }

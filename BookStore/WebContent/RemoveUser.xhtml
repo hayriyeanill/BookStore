@@ -16,15 +16,11 @@
 	<h:form>
 		<h:inputHidden value="#{formUsers.email1}" />
 		<h:panelGrid columns="3">
-			#{msgs.rFullName}:
-			<h:inputText value="#{formUsers.fullName}" required="true" 
-			             requiredMessage="Enter user name." 
-			             validatorMessage="Enter at least 3, at most 25 chars." id="fullname">
-				<f:validateLength minimum="3" maximum="25" />
-			</h:inputText>
+			#{msgs.rFullName}
+			<h:inputText value="#{formUsers.fullName}" required="true"  disabled="true" />
 			<h:message for="fullname" styleClass="error" />
 
-			#{msgs.rEmailAddress}:
+			#{msgs.rEmailAddress}
 		<h:inputText value="#{formUsers.email1}" disabled="true" >
 			</h:inputText>
 			<h:message for="email1" styleClass="error" />

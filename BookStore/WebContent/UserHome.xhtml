@@ -13,6 +13,8 @@
 		function showTab(index){
 			PF('tabView').select(index);
 		}
+	
+		
 	</script>
 </h:head>
 <h:body>  
@@ -34,20 +36,31 @@
 		<p:tab title="#{msgs.homeMyBookList}" >
 		<h2>#{msgs.formBookList}</h2>
 	<h:form>
-	 <h:outputText value="#{formBooks.books}" escape="false" /> 
-	<h:commandButton value="#{msgs.buttonAddtoBasket}"  onclick="showTab(2);"></h:commandButton>
-	<h:commandButton value="#{msgs.buttonAddMore}" onclick="showTab(0);"></h:commandButton>
+	<h:panelGrid columns="3">
+ 
+	<h:selectOneMenu value="#{formBooks.selectedbook}" id="dd">
+		<f:selectItem itemLabel="-- Select Book --" itemValue="-" />
+		<f:selectItems value="#{formBooks.selectedBooks}"   />
+	<f:ajax render="lblResult"  />
+	</h:selectOneMenu>  
+			
+  <h:commandButton id="lblResult" value="#{msgs.buttonAddtoBasket}"  onclick="showTab(2);" disabled="#{!formBooks.bookSelected}"/> 
+  <h:commandButton value="#{msgs.buttonAddMore}" onclick="showTab(0);" />
+		</h:panelGrid>
 	 </h:form>
 		</p:tab>
 		
 		<p:tab title="#{msgs.homeProductBasket}" >
 		<h2>#{msgs.formMyBasket}</h2>
 	<h:form>	
-	<h:outputText value="#{formBooks.books}" escape="false"></h:outputText> 
+	
+    <h:outputText value="#{formBooks.selectedbook}" id="lblResult" />
+	
+	<br/><br/>
 	<h:commandButton value="#{msgs.buttonBuy}"  onclick="showTab(3);" > </h:commandButton>
 	</h:form>
 		</p:tab>
-		
+		 
 			<p:tab title="#{msgs.homePurchase}">
 		<h2>#{msgs.formProductPurchaseText}</h2>
 	<h:form>	

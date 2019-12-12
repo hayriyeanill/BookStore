@@ -1,4 +1,5 @@
  package book;
+
 import java.util.List;
 import java.util.ResourceBundle;
 import javax.faces.bean.*;
@@ -6,10 +7,15 @@ import javax.faces.context.FacesContext;
 import book.DataAccess;
 
 
+
+
 @ManagedBean
 public class FormBooks extends Books  {
    
    private String status;
+   public String selectedbook;
+ 
+
    
 public String getStatus() {
 	return status;
@@ -19,6 +25,14 @@ public void setStatus(String status) {
 	this.status = status;
 }
 
+public String getSelectedbook() {
+	return selectedbook;
+}
+
+public void setSelectedbook(String selectedbook) {
+	this.selectedbook = selectedbook;
+}
+
 public String getBooks(){
 	return DataAccess.viewData();
 }
@@ -26,6 +40,11 @@ public String getBooks(){
 public List<Books> getBooksList(){
 	return DataAccess.BookList();
 }
+
+public List<Books> getSelectedBooks(){
+	return DataAccess.selectBook();
+}
+
 
 public String formPage() {
 	return "form";
@@ -80,6 +99,8 @@ public String deleteBooks(){
 
 	}
 
+
+
 	public String RemoveBooks(String bname) {
 		Books u = DataAccess.findBooks(bname);
 		this.setBname(u.getBname());
@@ -93,7 +114,16 @@ public String deleteBooks(){
 		return "RemoveBook" ;
 	}
 	
-
+	public boolean isBookSelected(){
+		if ((selectedbook == null) || (selectedbook.equals("-"))){
+			status = "";
+			return false;
+		}
+		else{
+			return true;
+		}
+	}
+	
 
 }
 

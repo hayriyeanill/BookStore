@@ -19,9 +19,15 @@ public class Books {
 		this.price = price;
 	}
 
-	public Books() {
+	public Books(String bname) {
+		this.bname = bname;
 	}
 
+	
+	public Books() {
+		
+	}
+	
 	public String getBname() {
 		return bname;
 	}
@@ -86,7 +92,9 @@ public class Books {
 		this.price = price;
 	}
 	
-	
+	public String toString() {
+		return this.bname;
+	}
 	   
 	   
 }

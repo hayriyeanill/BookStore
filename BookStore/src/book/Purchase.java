@@ -8,14 +8,14 @@ import javax.faces.bean.ManagedBean;
 import javax.faces.context.FacesContext;
 
 @ManagedBean
-public class Purchase {
+public class Purchase extends Books {
   private String fullName;
   private String CreditCardNumber;
   private Date yearMonth;
   private String csv;
   private String purchaseAddress;
   private String message;
-  
+ 
   
 public String getFullName() {
 	return fullName;
@@ -56,6 +56,7 @@ public void setMessage(String message) {
 	this.message = message;
 }
 
+
 public String getFormattedYearMonth() {
 	SimpleDateFormat dateFormat = new SimpleDateFormat("MM/yy");
 	return dateFormat.format(yearMonth);
@@ -80,6 +81,8 @@ public String AddToBasket() {
 	FacesContext fc = FacesContext.getCurrentInstance();
 	ResourceBundle rb = fc.getApplication().getResourceBundle(fc, "msgs");
 	message = rb.getString("basketMessage");
+	
+	 
 	return "ProductBasket"; //ProductBasket.xhtml
 		
 }
