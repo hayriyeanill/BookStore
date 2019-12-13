@@ -45,7 +45,6 @@ public List<Books> getSelectedBooks(){
 	return DataAccess.selectBook();
 }
 
-
 public String formPage() {
 	return "form";
 }
@@ -64,7 +63,7 @@ public String save(){
 		status = rb.getString("validationError"); // "Please fill all of the form fields.";
 	}
 	else{
-		if(DataAccess.saveData(getBname(), getAuthor(), getPage_number(), getFirst_edition_year(),getLanguage(),getCategory(),getPublisher(),getPrice() ))
+		if(DataAccess.saveData(getBname(), getAuthor(), getPage_number(), getFirst_edition_year(), getLanguage(),getCategory(),getPublisher(),getPrice() ))
 			status = rb.getString("success"); //status = "Thank you!";
 		else
 			status = rb.getString("unknownError"); //status = "An error occurred while processing your request.";
@@ -123,6 +122,7 @@ public String deleteBooks(){
 			return true;
 		}
 	}
+	
 	
 
 }

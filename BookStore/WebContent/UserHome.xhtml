@@ -36,12 +36,13 @@
 		<p:tab title="#{msgs.homeMyBookList}" >
 		<h2>#{msgs.formBookList}</h2>
 	<h:form>
+	<p>#{msgs.bookListText}</p>
+	
 	<h:panelGrid columns="3">
- 
-	<h:selectOneMenu value="#{formBooks.selectedbook}" id="dd">
+	<h:selectOneMenu value="#{formBooks.selectedbook}" id="dd" >
 		<f:selectItem itemLabel="-- Select Book --" itemValue="-" />
 		<f:selectItems value="#{formBooks.selectedBooks}"   />
-	<f:ajax render="lblResult"  />
+	<f:ajax render="lblResult"    />
 	</h:selectOneMenu>  
 			
   <h:commandButton id="lblResult" value="#{msgs.buttonAddtoBasket}"  onclick="showTab(2);" disabled="#{!formBooks.bookSelected}"/> 
@@ -52,19 +53,19 @@
 		
 		<p:tab title="#{msgs.homeProductBasket}" >
 		<h2>#{msgs.formMyBasket}</h2>
-	<h:form>	
-	
-    <h:outputText value="#{formBooks.selectedbook}" id="lblResult" />
-	
+	<h:form>		
+    <h:outputText value="#{formBooks.selectedbook}" id="lblResult" />	
 	<br/><br/>
-	<h:commandButton value="#{msgs.buttonBuy}"  onclick="showTab(3);" > </h:commandButton>
+	<h:commandButton value="#{msgs.buttonBuy}"  onclick="showTab(3);" disabled="#{!formBooks.bookSelected}" /> 
 	</h:form>
 		</p:tab>
 		 
-			<p:tab title="#{msgs.homePurchase}">
+	<p:tab title="#{msgs.homePurchase}">
 		<h2>#{msgs.formProductPurchaseText}</h2>
 	<h:form>	
+	
 	 <h:panelGrid columns="3">
+	
 	 #{msgs.purchaseFullName}
 	  <h:inputText value="#{purchase.fullName}" required="true" requiredMessage="Enter your full name."
      validatorMessage="Enter at least 3, at most 25 chars" id="fullName">

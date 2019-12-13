@@ -1,5 +1,4 @@
 package book;
-
 public class Books {
 
 	private String bname;
@@ -19,8 +18,9 @@ public class Books {
 		this.price = price;
 	}
 
-	public Books(String bname) {
+	public Books(String bname, 	String price) {
 		this.bname = bname;
+		this.price = price;
 	}
 
 	
@@ -59,6 +59,8 @@ public class Books {
 	public void setFirst_edition_year(String first_edition_year) {
 		this.first_edition_year = first_edition_year;
 	}
+	
+	
 
 	public String getLanguage() {
 		return language;
@@ -92,8 +94,10 @@ public class Books {
 		this.price = price;
 	}
 	
+	
+	
 	public String toString() {
-		return this.bname;
+		return this.bname + " - " + this.price;
 	}
 	   
 	   

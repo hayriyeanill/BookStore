@@ -44,7 +44,7 @@ public class DataAccess {
 		try {
 			Connection connection = getConnection();
 			Statement statement = connection.createStatement();
-			String sql = "DELETE FROM Users";
+			String sql = "DELETE FROM Books";
 
 			statement.executeUpdate(sql);
 	
@@ -367,10 +367,10 @@ public class DataAccess {
 		try{
 			Connection connection = getConnection();
 			Statement statement = connection.createStatement();
-			String sql = "SELECT bname FROM Books";
+			String sql = "SELECT bname, price FROM Books";
 			ResultSet rs = statement.executeQuery(sql);
 			while(rs.next()) 
-				result.add(new Books(rs.getString("bname")));
+				result.add(new Books(rs.getString("bname"), rs.getString("price")));
 			connection.close();
 			}catch (Exception e) {
 			e.printStackTrace();

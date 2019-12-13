@@ -14,30 +14,64 @@
 	<h2>#{msgs.formTitle}</h2>
 	<p>#{msgs.formText}</p>
 	<h:form>
-		<h:panelGrid columns="2">
+		<h:panelGrid columns="3">
 			#{msgs.bookName}
-			<h:inputText value="#{formBooks.bname}" />
-			
+			<h:inputText value="#{formBooks.bname}" required="true" requiredMessage="Enter book name."
+     validatorMessage="Enter at least 3, at most 25 chars" id="bName">
+     <f:validateLength minimum="3" maximum="25" />
+		</h:inputText>
+     <h:message for="bName" styleClass="error" />
+     
 			#{msgs.author}
-			<h:inputText value="#{formBooks.author}"/>
+			<h:inputText value="#{formBooks.author}" required="true" requiredMessage="Enter author name."
+     validatorMessage="Enter at least 3, at most 25 chars" id="author">
+     <f:validateLength minimum="3" maximum="25" />
+		</h:inputText>
+     <h:message for="author" styleClass="error" />
 			
 			#{msgs.pageNumber}
-			<h:inputText value="#{formBooks.page_number}" />
+			<h:inputText value="#{formBooks.page_number}" required="true" requiredMessage="Enter page number." 
+     validatorMessage="page number must be at least 2 digit."  id="page_number" >
+      <f:validateLength minimum="2" />
+      </h:inputText>
+     <h:message for="page_number" styleClass="error" />
+     
 			
 			#{msgs.firstEditionYear}
-			<h:inputText value="#{formBooks.first_edition_year}" />
+			<h:inputText value="#{formBooks.first_edition_year}" required="true" requiredMessage="Enter first edition year." 
+     validatorMessage="first edition must be at least 4 digit"  id="first_edition_year" >
+       <f:validateLength minimum="4" />
+      </h:inputText>
+     <h:message for="first_edition_year" styleClass="error" />
 			
 			#{msgs.language}
-			<h:inputText value="#{formBooks.language}"/>
+			<h:inputText value="#{formBooks.language}" required="true" requiredMessage="Enter the language of the book."
+     validatorMessage="Enter at least 3, at most 25 chars" id="language">
+     <f:validateLength minimum="3" maximum="25" />
+      </h:inputText>
+     <h:message for="language" styleClass="error" />
 			
 			#{msgs.category}
-			<h:inputText value="#{formBooks.category}" />
+			<h:inputText value="#{formBooks.category}" required="true" requiredMessage="Enter the category to which the book belongs"
+     validatorMessage="Enter at least 3, at most 25 chars" id="category">
+     <f:validateLength minimum="3" maximum="25" />
+      </h:inputText>
+     <h:message for="category" styleClass="error" />
 			
 			#{msgs.publisher}
-			<h:inputText value="#{formBooks.publisher}" />
+			<h:inputText value="#{formBooks.publisher}" required="true" requiredMessage="Enter the publisher of the book"
+     validatorMessage="Enter at least 3, at most 25 chars" id="publisher">
+     <f:validateLength minimum="3" maximum="25" />
+      </h:inputText>
+     <h:message for="publisher" styleClass="error" />
 			
 			#{msgs.price}
-			<h:inputText value="#{formBooks.price}"/>	
+			<h:inputText value="#{formBooks.price}" required="true" requiredMessage="Enter the price of the book." 
+     validatorMessage="Price must be at least 2-digit."  id="price" >
+      <f:validateLength minimum="2" />
+      </h:inputText>
+     <h:message for="price" styleClass="error" />	
+     
 		</h:panelGrid>
 		<br/>
 	
