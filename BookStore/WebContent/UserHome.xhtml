@@ -13,8 +13,7 @@
 		function showTab(index){
 			PF('tabView').select(index);
 		}
-	
-		
+			
 	</script>
 </h:head>
 <h:body>  
@@ -115,34 +114,6 @@
 	#{purchase.message}
 		</p:tab>
 		
-	<!-- 		<p:tab title="#{msgs.homeUserInfo}" src="#{formUsers.editUsers(u.email1)}">
-	<h:form>
-	<h:inputHidden value="#{formUsers.email1}"/>
-		<h:panelGrid columns="3">
-			#{msgs.rFullName}
-			<h:inputText value="#{formUsers.fullName}" required="true"  requiredMessage="Enter your name."
-     validatorMessage="Enter at least 3, at most 25 chars" id="fullName">
-     <f:validateLength minimum="3" maximum="25" />
-      </h:inputText>
-     <h:message for="fullName" styleClass="error" />		
-			#{msgs.rPassword}
-			<h:inputSecret value="#{formUsers.password}" required="true" requiredMessage="Password must enter."
-     validatorMessage="Password must contain at least one number and one uppercase and lowercase letter, and at least 8 or more characters "  id="password"> 
-        <f:validateRegex pattern="(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{8,}" />
-         </h:inputSecret>
-           <h:message for="password" styleClass="error" />
-					
-			#{msgs.rEmailAddress}
-			<h:inputText value="#{formUsers.email1}" disabled="true" >
-			</h:inputText>
-			<h:message for="email1" styleClass="error" />
-		</h:panelGrid>
-		<br/>
-		<h:commandButton value="#{msgs.buttonUpdate}" action="#{formUsers.updateUsers}" />
-		<br/><br/>
-		#{formUsers.message}
-	</h:form>
-		</p:tab>	 -->
 	</p:tabView>
 	 
 </h:form>

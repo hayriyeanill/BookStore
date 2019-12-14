@@ -12,13 +12,10 @@
 <body>
  <f:view locale="#{localeBean.currentLocale}">
 	<h2>#{msgs.formMyBasket}</h2>
-	<h:form>	
-	<h:outputText value="#{formBooks.books}" escape="false"></h:outputText> 
-    <h:inputText value="#{formBooks.selectedbook}" escape="false" />
- 
- <h:commandButton action="#{formBooks.NextStep}" value="Select"> </h:commandButton>
-    
-
+		<h:form>		
+    <h:outputText value="#{formBooks.selectedbook}" id="lblResult" />	
+	<br/><br/>
+	<h:commandButton value="#{msgs.buttonBuy}"  onclick="showTab(3);" disabled="#{!formBooks.bookSelected}" /> 
 	</h:form>
 	
 	 <h:form>

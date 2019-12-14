@@ -13,7 +13,9 @@
  <f:view locale="#{localeBean.currentLocale}">
 	<h2>#{msgs.formProductPurchaseText}</h2>
 	<h:form>	
+	
 	 <h:panelGrid columns="3">
+	
 	 #{msgs.purchaseFullName}
 	  <h:inputText value="#{purchase.fullName}" required="true" requiredMessage="Enter your full name."
      validatorMessage="Enter at least 3, at most 25 chars" id="fullName">
@@ -61,8 +63,6 @@
 	 <br/><br/>
 	</h:form>
 	#{purchase.message}
-	
-	 <h:form>
 			<h:commandLink action="#{localeBean.setEnglish}" value="#{msgs.langEN}" /> |
 			<h:commandLink action="#{localeBean.setTurkish}" value="#{msgs.langTR}" />
 			

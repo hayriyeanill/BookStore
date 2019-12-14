@@ -12,12 +12,20 @@
 <body>
 
     <f:view locale="#{localeBean.currentLocale}">
-	<h2>#{msgs.formBookList}</h2>
-	<h:outputText value="#{formBooks.books}" escape="false" />
+		<h:form>
+	<p>#{msgs.bookListText}</p>
 	
-	
-	 
-	<h:form>
+	<h:panelGrid columns="3">
+	<h:selectOneMenu value="#{formBooks.selectedbook}" id="dd" >
+		<f:selectItem itemLabel="-- Select Book --" itemValue="-" />
+		<f:selectItems value="#{formBooks.selectedBooks}"   />
+	<f:ajax render="lblResult"    />
+	</h:selectOneMenu>  
+			
+  <h:commandButton id="lblResult" value="#{msgs.buttonAddtoBasket}"  onclick="showTab(2);" disabled="#{!formBooks.bookSelected}"/> 
+  <h:commandButton value="#{msgs.buttonAddMore}" onclick="showTab(0);" />
+		</h:panelGrid>
+	 </h:form>
 			<h:commandLink action="#{localeBean.setEnglish}" value="#{msgs.langEN}" /> 
 			<h:commandLink action="#{localeBean.setTurkish}" value="#{msgs.langTR}" />
 		</h:form>

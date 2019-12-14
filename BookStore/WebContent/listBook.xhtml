@@ -13,11 +13,11 @@
 <h:body>
 <f:view locale="#{localeBean.currentLocale}">
 	<h2>#{msgs.formRegisteredBooks}</h2>
-	<h:form>
+<h:form>
 		<ui:repeat var="u" value="#{formBooks.booksList}" varStatus="status">
 		<p>
 		
-		<h:commandButton value="#{msgs.buttonEdit}" action="#{formBooks.editBooks(u.bname)}"/> |
+		<h:commandButton value="#{msgs.buttonEdit}" action="#{formBooks.editBooks(u.bname)}" /> |
 		<h:commandButton value="#{msgs.buttonDelete}" action="#{formBooks.RemoveBooks(u.bname)}"/> 
 		
 		#{u.bname}
@@ -29,7 +29,7 @@
 		#{u.publisher}
 		#{u.price}</p>
 		 <br/>
-		
+
 		</ui:repeat>
 	</h:form>
 	

@@ -16,12 +16,13 @@
 	<h:form>
 		<ui:repeat var="u" value="#{formUsers.userList}" varStatus="message">
 		<p>
-		<h:commandButton value="#{msgs.buttonEdit}" action="#{formUsers.editUsers(u.email1)}"/> |
+	
+		<h:commandButton value="#{msgs.buttonEdit}" action="#{formUsers.editUsers(u.email1)}" /> |
 		<h:commandButton value="#{msgs.buttonDelete}" action="#{formUsers.RemoveUsers(u.email1)}"/>
 		#{u.fullName}
 		#{u.email1}</p>
 		 <br/>
-			
+		
 		</ui:repeat>
 	</h:form>
 	
