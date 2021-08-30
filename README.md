@@ -1,4 +1,5 @@
-# BookStore
+#Advanced in Web Programming Project
+#BookStore
 
 Online book store is a JSF web application designed for users to view, select and shop books online.
 Application is supported by CRUD (create, read, update, delete) functions. Multi-Language support
